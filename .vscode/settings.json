@@ -1,0 +1,4 @@
+{
+  "css.validate.validProperties": [],
+  "css.lint.unknownAtRules": "ignore"
+}
