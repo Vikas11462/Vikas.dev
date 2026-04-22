@@ -6,6 +6,7 @@ import { GalaxyBackground } from "@/components/ui/galaxy-background";
 import { ClientProviders } from "@/components/ui/client-providers";
 import { PageTransition } from "@/components/ui/page-transition";
 import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -110,6 +111,7 @@ export default function RootLayout({
           </ClientProviders>
         </div>
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
