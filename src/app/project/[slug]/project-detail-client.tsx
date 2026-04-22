@@ -22,8 +22,8 @@ interface Project {
   results: string[];
   techStack: string[];
   image: string;
-  liveUrl: string;
-  githubUrl: string;
+  liveUrl: string | null;
+  githubUrl: string | null;
   featured: boolean;
 }
 
