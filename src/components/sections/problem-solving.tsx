@@ -137,7 +137,7 @@ export function ProblemSolving() {
 
               {/* Language note */}
               <p className="text-xs text-muted-foreground/40 font-mono mb-6">
-                // Primary language: C++ · Also solving in Java
+                {"// Primary language: C++ · Also solving in Java"}
               </p>
 
               {/* CTA */}
