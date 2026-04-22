@@ -7,7 +7,7 @@
 export const personalInfo = {
   name: "Vikas",
   role: "Backend-Focused Full Stack Developer",
-  tagline: "Building scalable backend systems and real-world full stack applications.",
+  tagline: "Backend-focused developer shipping real projects. Built scalable apps used by 100+ users, solved 150+ DSA problems, and ranked Top 15 in national hackathons.",
   email: "vikasvk11462@gmail.com",
   github: "https://github.com/Vikas11462",
   linkedin: "https://www.linkedin.com/in/vikas-vk-ba5026329/",
@@ -56,9 +56,9 @@ export const projects = [
       "Configurable per-endpoint and per-client rate policies",
     ],
     techStack: ["Node.js", "Redis", "Express.js", "WebSockets"],
-    liveUrl: "",
-    githubUrl: "",
-    image: "/projects/rateguard.webp",
+    liveUrl: null,
+    githubUrl: "https://github.com/Vikas11462/distributed-rate-limiter",
+    image: "/projects/rateguard.png",
     featured: true,
   },
   {
@@ -76,9 +76,9 @@ export const projects = [
       "Full CRUD operations with admin dashboard",
     ],
     techStack: ["React", "Tailwind CSS", "Node.js", "REST API", "PostgreSQL"],
-    liveUrl: "",
-    githubUrl: "",
-    image: "/projects/carbon.webp",
+    liveUrl: null,
+    githubUrl: "https://github.com/Vikas11462/pixel-club-platform",
+    image: "/projects/pixelclub.png",
     featured: true,
   },
   {
@@ -96,9 +96,9 @@ export const projects = [
       "Automated client inquiry pipeline via custom API endpoints",
     ],
     techStack: ["Next.js", "Node.js", "Supabase", "REST APIs", "Vercel"],
-    liveUrl: "",
-    githubUrl: "",
-    image: "/projects/ai-diag.webp",
+    liveUrl: null,
+    githubUrl: "https://github.com/Vikas11462/business-website",
+    image: "/projects/business.png",
     featured: true,
   },
   {
@@ -116,9 +116,9 @@ export const projects = [
       "Clean API interface for frontend integration",
     ],
     techStack: ["Python", "FastAPI", "AI/ML", "REST APIs"],
-    liveUrl: "",
-    githubUrl: "",
-    image: "/projects/placeholder.webp",
+    liveUrl: null,
+    githubUrl: "https://github.com/Vikas11462/ai-personal-assistant",
+    image: "/projects/aiassistant.png",
     featured: false,
   },
 ];
@@ -174,20 +174,20 @@ export const achievements = [
 export const education = [
   {
     id: "edu-1",
-    degree: "B.Tech – Computer Science",
-    school: "Jaypee University, Anoopshahr",
-    period: "2024 - 2028",
+    degree: "B.Tech – Computer Science & Engineering",
+    school: "Jaypee University of Engineering & Technology, Anoopshahr",
+    period: "2024 – 2028",
   },
   {
     id: "edu-2",
-    degree: "Class XII (CBSE)",
-    school: "High School",
+    degree: "Class XII – Science (CBSE)",
+    school: "M.G. Public School",
     period: "Completed 2024",
   },
   {
     id: "edu-3",
     degree: "Class X (CBSE)",
-    school: "Secondary School",
+    school: "M.G. Public School",
     period: "Completed 2022",
   },
 ];
@@ -223,10 +223,10 @@ export const testimonials = [
 // STATS — Used by AnimatedCounter in About section
 // ─────────────────────────────────────────────────────────────────
 export const stats = [
-  { label: "Years Experience", value: 1, suffix: "+" },
+  { label: "DSA Problems Solved", value: 150, suffix: "+" },
   { label: "Projects Shipped", value: 10, suffix: "+" },
-  { label: "Technologies", value: 15, suffix: "+" },
-  { label: "Users Impacted", value: 100, suffix: "+" },
+  { label: "Active Users Impacted", value: 100, suffix: "+" },
+  { label: "Hackathons Competed", value: 2, suffix: "" },
 ];
 
 // ─────────────────────────────────────────────────────────────────
@@ -251,13 +251,15 @@ export const resumeData = {
 // ─────────────────────────────────────────────────────────────────
 export const commandItems = [
   { id: "nav-home", label: "Home", section: "Navigation", action: "/" },
-  { id: "nav-about", label: "About", section: "Navigation", action: "#about" },
-  { id: "nav-skills", label: "Skills", section: "Navigation", action: "#skills" },
-  { id: "nav-projects", label: "Projects", section: "Navigation", action: "#projects" },
-  { id: "nav-experience", label: "Experience", section: "Navigation", action: "#experience" },
-  { id: "nav-resume", label: "Resume", section: "Navigation", action: "#resume" },
-  { id: "nav-testimonials", label: "Testimonials", section: "Navigation", action: "#testimonials" },
-  { id: "nav-contact", label: "Contact", section: "Navigation", action: "#contact" },
+  { id: "nav-about", label: "About", section: "Navigation", action: "/#about" },
+  { id: "nav-skills", label: "Skills", section: "Navigation", action: "/#skills" },
+  { id: "nav-projects", label: "Projects", section: "Navigation", action: "/projects" },
+  { id: "nav-dsa", label: "DSA & Problem Solving", section: "Navigation", action: "/#problem-solving" },
+  { id: "nav-experience", label: "Experience", section: "Navigation", action: "/#experience" },
+  { id: "nav-building", label: "Currently Building", section: "Navigation", action: "/#building" },
+  { id: "nav-resume", label: "Resume", section: "Navigation", action: "/resume" },
+  { id: "nav-testimonials", label: "Testimonials", section: "Navigation", action: "/#testimonials" },
+  { id: "nav-contact", label: "Contact", section: "Navigation", action: "/#contact" },
   ...projects.map((p) => ({
     id: `proj-${p.slug}`,
     label: p.title,

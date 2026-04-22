@@ -5,14 +5,12 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { projects } from "@/data/content";
 import { MotionReveal } from "@/components/ui/motion-wrapper";
-import { ExternalLink, Github, ArrowUpRight } from "lucide-react";
+import { ExternalLink, Github, ArrowUpRight, ArrowRight } from "lucide-react";
 
-/**
- * Projects — Featured project showcase with real image previews.
- * Alternating editorial layout, image hover depth, tech stack pills.
- * Links to /project/[slug] case-study detail pages.
- */
-export function Projects() {
+export function ProjectsTeaser() {
+  // Only take top 2 featured projects
+  const featuredProjects = projects.filter(p => p.featured).slice(0, 2);
+
   return (
     <section id="projects" className="relative py-28 md:py-36 overflow-hidden">
       {/* Atmosphere */}
@@ -34,7 +32,7 @@ export function Projects() {
 
         {/* Project cards */}
         <div className="flex flex-col gap-16 md:gap-28">
-          {projects.map((project, index) => (
+          {featuredProjects.map((project, index) => (
             <MotionReveal
               key={project.id}
               direction={index % 2 === 0 ? "left" : "right"}
@@ -43,7 +41,7 @@ export function Projects() {
               <div
                 className={`group grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center`}
               >
-                {/* Project image — real screenshot */}
+                {/* Project image */}
                 <Link
                   href={`/project/${project.slug}`}
                   className={index % 2 !== 0 ? "lg:order-2" : ""}
@@ -53,25 +51,20 @@ export function Projects() {
                     transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
                     className="relative aspect-[16/10] rounded-2xl overflow-hidden border border-white/[0.06] bg-surface-elevated cursor-pointer shadow-2xl shadow-black/40"
                   >
-                    {/* Real project image */}
                     <Image
                       src={project.image}
                       alt={`${project.title} preview`}
                       fill
                       className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
                     />
-
-                    {/* Subtle dark vignette overlay */}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
 
-                    {/* Top-right arrow on hover */}
                     <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0">
                       <div className="w-10 h-10 rounded-full bg-black/60 backdrop-blur-sm border border-white/10 flex items-center justify-center">
                         <ArrowUpRight size={16} className="text-white" />
                       </div>
                     </div>
 
-                    {/* Featured index badge */}
                     <div className="absolute bottom-4 left-4">
                       <span className="font-mono text-xs text-white/30">
                         {String(index + 1).padStart(2, "0")}
@@ -82,13 +75,10 @@ export function Projects() {
 
                 {/* Project info */}
                 <div className={index % 2 !== 0 ? "lg:order-1 lg:text-right" : ""}>
-                  {/* Featured badge */}
-                  {project.featured && (
-                    <span className="inline-flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-[0.2em] text-primary mb-4">
-                      <span className="w-1.5 h-1.5 rounded-full bg-primary" />
-                      Featured
-                    </span>
-                  )}
+                  <span className="inline-flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-[0.2em] text-primary mb-4">
+                    <span className="w-1.5 h-1.5 rounded-full bg-primary" />
+                    Featured
+                  </span>
 
                   <h3 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-4">
                     {project.title}
@@ -98,7 +88,6 @@ export function Projects() {
                     {project.description}
                   </p>
 
-                  {/* Tech stack */}
                   <div className={`flex flex-wrap gap-2 mb-8 ${index % 2 !== 0 ? "lg:justify-end" : ""}`}>
                     {project.techStack.map((tech) => (
                       <span
@@ -110,7 +99,6 @@ export function Projects() {
                     ))}
                   </div>
 
-                  {/* Links */}
                   <div className={`flex items-center gap-4 ${index % 2 !== 0 ? "lg:justify-end" : ""}`}>
                     <Link
                       href={`/project/${project.slug}`}
@@ -126,7 +114,6 @@ export function Projects() {
                         target="_blank"
                         rel="noreferrer"
                         className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
-                        aria-label={`View ${project.title} source code on GitHub`}
                       >
                         <Github size={16} />
                         GitHub
@@ -138,7 +125,6 @@ export function Projects() {
                         target="_blank"
                         rel="noreferrer"
                         className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
-                        aria-label={`View ${project.title} live demo`}
                       >
                         <ExternalLink size={16} />
                         Live Demo
@@ -150,9 +136,19 @@ export function Projects() {
             </MotionReveal>
           ))}
         </div>
+
+        {/* View All Projects CTA */}
+        <MotionReveal className="mt-20 flex justify-center text-center">
+          <Link
+            href="/projects"
+            className="group inline-flex items-center gap-2 text-sm font-medium text-foreground hover:text-primary transition-colors py-4 px-8 rounded-full border border-white/[0.08] hover:border-primary/50 bg-white/[0.02] hover:bg-primary/10"
+          >
+            View All Projects
+            <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+          </Link>
+        </MotionReveal>
       </div>
 
-      {/* Section divider */}
       <div className="section-divider mt-28 md:mt-36" />
     </section>
   );

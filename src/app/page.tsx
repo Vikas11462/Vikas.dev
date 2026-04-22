@@ -3,11 +3,11 @@ import { Footer } from "@/components/layout/footer";
 import { Hero } from "@/components/sections/hero";
 import { About } from "@/components/sections/about";
 import { Skills } from "@/components/sections/skills";
-import { Projects } from "@/components/sections/projects";
+import { ProjectsTeaser } from "@/components/sections/projects-teaser";
+import { ProblemSolving } from "@/components/sections/problem-solving";
 import { Experience } from "@/components/sections/experience";
+import { CurrentlyBuilding } from "@/components/sections/currently-building";
 import { Testimonials } from "@/components/sections/testimonials";
-import { Resume } from "@/components/sections/resume";
-import { Blog } from "@/components/sections/blog";
 import { Contact } from "@/components/sections/contact";
 
 export default function Home() {
@@ -18,11 +18,11 @@ export default function Home() {
         <Hero />
         <About />
         <Skills />
-        <Projects />
+        <ProjectsTeaser />
+        <ProblemSolving />
         <Experience />
+        <CurrentlyBuilding />
         <Testimonials />
-        <Resume />
-        <Blog />
         <Contact />
       </main>
       <Footer />

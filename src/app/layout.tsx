@@ -4,6 +4,7 @@ import { Inter, Outfit } from "next/font/google";
 import "./globals.css";
 import { GalaxyBackground } from "@/components/ui/galaxy-background";
 import { ClientProviders } from "@/components/ui/client-providers";
+import { PageTransition } from "@/components/ui/page-transition";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -103,7 +104,9 @@ export default function RootLayout({
       <body className="min-h-screen bg-transparent text-foreground antialiased font-sans grain">
         <GalaxyBackground />
         <div className="relative z-10 w-full min-h-screen">
-          <ClientProviders>{children}</ClientProviders>
+          <ClientProviders>
+            <PageTransition>{children}</PageTransition>
+          </ClientProviders>
         </div>
       </body>
     </html>

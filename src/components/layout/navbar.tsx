@@ -8,18 +8,24 @@ import { personalInfo } from "@/data/content";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { CommandPalette } from "@/components/ui/command-palette";
 
+import { usePathname } from "next/navigation";
+import { useActiveSection } from "@/hooks/useActiveSection";
+
 const navLinks = [
-  { label: "About", href: "#about" },
-  { label: "Skills", href: "#skills" },
-  { label: "Projects", href: "#projects" },
-  { label: "Experience", href: "#experience" },
-  { label: "Resume", href: "#resume" },
-  { label: "Contact", href: "#contact" },
+  { label: "About", href: "/#about", sectionId: "about" },
+  { label: "Skills", href: "/#skills", sectionId: "skills" },
+  { label: "Projects", href: "/projects", sectionId: "" },
+  { label: "DSA", href: "/#problem-solving", sectionId: "problem-solving" },
+  { label: "Experience", href: "/#experience", sectionId: "experience" },
+  { label: "Resume", href: "/resume", sectionId: "" },
+  { label: "Contact", href: "/#contact", sectionId: "contact" },
 ];
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const pathname = usePathname();
+  const activeSection = useActiveSection(["about", "skills", "problem-solving", "experience", "contact"]);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50);
@@ -61,17 +67,31 @@ export function Navbar() {
           </Link>
 
           {/* Desktop links */}
-          <div className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="relative text-[13px] font-medium uppercase tracking-[0.15em] text-muted-foreground transition-colors hover:text-foreground group"
-              >
-                {link.label}
-                <span className="absolute -bottom-1 left-0 h-px w-0 bg-primary transition-all duration-300 group-hover:w-full" />
-              </Link>
-            ))}
+          <div className="hidden md:flex items-center gap-2">
+            {navLinks.map((link) => {
+              const isActive =
+                (link.sectionId && activeSection === link.sectionId) ||
+                (pathname === link.href);
+
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={`relative px-3 py-1.5 text-[13px] font-medium uppercase tracking-[0.15em] transition-colors rounded-full group ${
+                    isActive
+                      ? "text-foreground bg-primary/5"
+                      : "text-muted-foreground hover:text-foreground"
+                  }`}
+                >
+                  {link.label}
+                  <span
+                    className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-px bg-primary transition-all duration-300 ${
+                      isActive ? "w-1/2" : "w-0 group-hover:w-1/2"
+                    }`}
+                  />
+                </Link>
+              );
+            })}
           </div>
 
           {/* CTA + Utilities + Mobile Toggle */}
@@ -122,22 +142,30 @@ export function Navbar() {
             className="fixed inset-0 z-40 bg-background/95 backdrop-blur-2xl flex flex-col items-center justify-center"
           >
             <nav className="flex flex-col items-center gap-8">
-              {navLinks.map((link, i) => (
-                <motion.div
-                  key={link.href}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: i * 0.08 }}
-                >
-                  <Link
-                    href={link.href}
-                    onClick={() => setMobileOpen(false)}
-                    className="text-2xl font-display font-medium text-foreground hover:text-primary transition-colors"
+              {navLinks.map((link, i) => {
+                const isActive =
+                  (link.sectionId && activeSection === link.sectionId) ||
+                  (pathname === link.href);
+
+                return (
+                  <motion.div
+                    key={link.href}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: i * 0.08 }}
                   >
-                    {link.label}
-                  </Link>
-                </motion.div>
-              ))}
+                    <Link
+                      href={link.href}
+                      onClick={() => setMobileOpen(false)}
+                      className={`text-2xl font-display font-medium transition-colors ${
+                        isActive ? "text-primary" : "text-foreground hover:text-primary"
+                      }`}
+                    >
+                      {link.label}
+                    </Link>
+                  </motion.div>
+                );
+              })}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}

@@ -256,7 +256,7 @@ export function Hero() {
         <div className="marquee-track py-3">
           {Array.from({ length: 2 }).map((_, i) => (
             <div key={i} className="flex items-center gap-8 px-8 shrink-0">
-              {["FULL STACK", "REACT", "NEXT.JS", "JAVA", "SPRING BOOT", "SYSTEM DESIGN", "TYPESCRIPT", "REDIS", "DOCKER", "POSTGRESQL"].map(
+              {["FULL STACK", "REACT", "NEXT.JS", "JAVA", "NODE.JS", "SYSTEM DESIGN", "REST APIs", "REDIS", "POSTGRESQL", "SUPABASE"].map(
                 (item) => (
                   <span key={`${item}-${i}`} className="text-[11px] font-medium uppercase tracking-[0.25em] text-muted-foreground/30 whitespace-nowrap flex items-center gap-8">
                     {item}
