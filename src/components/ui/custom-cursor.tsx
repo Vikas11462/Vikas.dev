@@ -83,7 +83,7 @@ export function CustomCursor() {
       {/* Dot */}
       <div
         ref={dotRef}
-        className="fixed top-0 left-0 z-[9999] pointer-events-none mix-blend-difference"
+        className="fixed top-0 left-0 z-[9999] pointer-events-none"
         style={{ opacity: visible ? 1 : 0, transition: "opacity 0.3s" }}
       >
         <div
@@ -96,7 +96,7 @@ export function CustomCursor() {
       {/* Ring */}
       <div
         ref={ringRef}
-        className="fixed top-0 left-0 z-[9998] pointer-events-none mix-blend-difference"
+        className="fixed top-0 left-0 z-[9998] pointer-events-none"
         style={{ opacity: visible ? 1 : 0, transition: "opacity 0.3s" }}
       >
         <div

@@ -25,9 +25,9 @@ const StarField = () => {
   const ref1 = useRef<THREE.Points<any, any>>(null!);
   const ref2 = useRef<THREE.Points<any, any>>(null!);
   
-  // Create two separate layers for parallax depth
-  const stars1 = useMemo(() => randomInSphere(3000, 1.2), []);
-  const stars2 = useMemo(() => randomInSphere(1500, 1.5), []);
+  // Create two separate layers for parallax depth (reduced count for performance)
+  const stars1 = useMemo(() => randomInSphere(1200, 1.2), []);
+  const stars2 = useMemo(() => randomInSphere(600, 1.5), []);
   
   const { scrollYProgress } = useScroll();
   
@@ -112,7 +112,8 @@ export function GalaxyBackground() {
     >
       <Canvas
         camera={{ position: [0, 0, 1] }}
-        dpr={[1, 2]}
+        dpr={[1, 1.5]}
+        performance={{ min: 0.5 }}
         style={{ opacity: isDark ? 1 : 0.3 }}
       >
         {/* Soft fog to obscure edges and create infinite depth */}
