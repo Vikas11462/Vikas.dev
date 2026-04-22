@@ -5,6 +5,7 @@ import "./globals.css";
 import { GalaxyBackground } from "@/components/ui/galaxy-background";
 import { ClientProviders } from "@/components/ui/client-providers";
 import { PageTransition } from "@/components/ui/page-transition";
+import { Analytics } from "@vercel/analytics/next";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -108,6 +109,7 @@ export default function RootLayout({
             <PageTransition>{children}</PageTransition>
           </ClientProviders>
         </div>
+        <Analytics />
       </body>
     </html>
   );
